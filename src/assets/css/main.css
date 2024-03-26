@@ -1,109 +1,186 @@
-* {
-  margin: 0;
-  padding: 0;
+@font-face {
+  font-family: 'Open Sans';
+  src: url(../fonts/opensans.ttf);
 }
 
-html, body, header {
+* {
+  /* Nothing should have a margin or padding by default */
+  /* This should be handled on element-level */
+  margin: 0;
+  padding: 0;
+
+  /* The font should be Open Sans */
+  font-family: 'Open Sans', sans-serif;
+}
+
+html, body {
+  /* Making sure the page takes up the entire window in height */
   height: 100%;
 }
 
-header {
+body {
+  /* The content of the body should be aligned in the middle of the screen */
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding-bottom: 0;
-  background: radial-gradient(ellipse at top, #f9f2c3, #f5e9e3, transparent),
-              radial-gradient(ellipse at bottom, #f5e9e3, #dbe9ca, transparent);
+  justify-content: center;
+  flex-direction: row;
+
+  /* The background should be a wallpaper */
+  background-image: url('../img/background.jpeg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 
-input {
-  padding: 1vw 2vw;
-  margin: 4vw;
-  border-radius: 20px;
-  border: .2vw solid rgba(0, 0, 0, .2);
-  margin-bottom: 2vh;
+header {
+  /* Make sure the box fills up the screen */
+  /* But it can't grow too large or it will lose the start menu resemblence */
+  height: 100%;
+  width: 100%;
+  max-height: 750px;
+  max-width: 700px;
+
+  /* Make sure the content of the header is aligned vertically, spacing equally */
+  /* The box itself should be at the bottom of it's parent */
+  display: flex;
+  overflow-y: auto;
+  flex-direction: column;
+  justify-content: space-between;
+  align-self: flex-end;
+
+  /* The box should have a border-radius and a transparant border */
+  /* On desktop, there should be some space between the bottom of the box and the screen */
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+  border: .2rem solid rgba(0, 0, 0, .05);
+
+  /* Make the background white, slightly transparant and a blur of the wallpaper */
+  background-color: rgba(255, 255, 255, .8);
+  backdrop-filter: blur(10rem);
+}
+
+.search {
+  /* There should be enough space in the box for an image at the start */
+  /* Give it some space around the edges */
+  padding: .5rem .5rem .5rem 3rem;
+  margin: 2rem 3rem 0 3rem;
+
+  /* Give the border a radius and make it slightly transparent */
+  border-radius: 1rem;
+  border: .1rem solid rgba(0, 0, 0, .2);
 }
 
 .header-footer {
+  /* The content is a horizontal line with items on either side of the box */
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  border-top: .2vw solid rgba(0, 0, 0, .01);
-  background-color: rgba(150, 150, 150, .1);
+
+  /* There should be a border at the top, radius at the bottom and transparent background */
+  border-top: .1rem solid rgba(0, 0, 0, .025);
+  border-radius: 0 0 1rem 1rem;
+  background-color: rgba(150, 150, 150, .05);
 }
 
 img {
-  width: 6vw;
-  border-radius: 3vw;
+  /* Images by default should be of a specific with and round */
+  width: 2.5rem;
+  border-radius: 2.5rem;
 }
 
 .content-block {
-  padding: 2vw 8vw;
+  /* A contentblock should have some space around it */
+  padding: 1rem 4rem;
 }
 
-.title {
+.content-block .title {
+  /* The title should be bold, larger then than other text and have some space below */
   font-weight: bold;
+  font-size: large;
   margin-bottom: 2vh;
 }
 
 .recents {
+  /* Recent item columns should be flexed horizontally with space between them */
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  margin-bottom: 2vh;
 }
 
 .recent-column {
+  /* The columns should be flexed vertically and grow to fill the space */
   flex-grow: 1;
 }
 
 .nav-links {
+  /* The navigation links should be displayed in multiple rows */
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   flex-wrap: wrap;
-  margin-top: 2vh;
+
+  /* In order to align the image with the title of the box, increase the size of the box */
+  transform: scale(1.05);
 }
 
 .nav-link {
+  /* The image and the text should be flexed vertically and centered */
   display: flex;
   flex-direction: column;
-  flex: 1 0 16%;
-  margin: 2vw 0;
-  text-align: center;
   align-items: center;
-  gap: 1vh;
+  text-align: center;
+
+  /* There should be 6 items in a row, spread and with some space around them */
+  flex: 1 0 16%;
+  margin: 1rem 0;
+  gap: .25rem;
+
+  /* The text should be black and have no decoration */
+  text-decoration: none;
+  color: black;
+  font-size: small;
 }
 
 .nav-link img {
-  width: 8vw;
-  border-radius: 1vw;
+  /* The image in navigation should have rounded corners and be a little bigger */
+  width: 4rem;
+  border-radius: .4rem;
 }
 
 .recent-list {
+  /* The recent list should be aligned vertically with some space in between */
   display: flex;
   flex-direction: column;
-  gap: 2vh;
+  gap: .5rem;
 }
 
 .recent-item {
+  /* The recent item should be a flexed row with some space between the elements */
   display: flex;
   flex-direction: row;
-  gap: 1vw;
   align-items: center;
+  gap: 1rem;
 }
 
 .recent-details {
+  /* The details of the recent item should be flexed vertically with space between them */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
-.recent-title {
-  font-weight: bold;
-  font-size: large;
+.recent-subtitle {
+  /* The subtitle of the recent item should be smaller and lighter */
+  font-size: small;
+  font-weight: lighter;
 }
 
-.recent-subtitle {
+.personal-info {
+  /* The personal info should be flexed in a row with space between the elements */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+
+  /* The personal info should be small text */
   font-size: small;
 }
