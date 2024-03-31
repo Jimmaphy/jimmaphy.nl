@@ -3,6 +3,36 @@
   src: url(../fonts/opensans.ttf);
 }
 
+:root {
+  --text-color: black;
+  --outline-color: rgba(100, 100, 100, .25);
+
+  --outside-border-color: rgba(0, 0, 0, .05);
+  --inner-border-color: rgba(0, 0, 0, .2);
+
+  --main-background-color: rgba(255, 255, 255, .8);
+  --inner-background-color: rgba(150, 150, 150, .05);
+  --hover-background-color: rgba(255, 255, 255, .25);
+
+  --background-layer: transparent;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text-color: white;
+    --outline-color: rgba(255, 255, 255, .3);
+
+    --outside-border-color: rgba(255, 255, 255, .05);
+    --inner-border-color: rgba(255, 255, 255, .2);
+
+    --main-background-color: rgba(0, 0, 0, .8);
+    --inner-background-color: rgba(150, 150, 150, .05);
+    --hover-background-color: rgba(75, 75, 75, .25);
+
+    --background-layer: rgba(0, 0, 0, .6);
+  }
+}
+
 * {
   /* Nothing should have a margin or padding by default */
   /* This should be handled on element-level */
@@ -11,11 +41,30 @@
 
   /* The font should be Open Sans */
   font-family: 'Open Sans', sans-serif;
+
+  /* The text should be the same color with no decoration everywhere */
+  text-decoration: none;
+  color: var(--text-color);
+  font-size: small;
 }
 
-html, body {
+*:focus {
+  /* Change outline color for keyboard selection to match the theme */
+  outline: .1rem solid var(--outline-color);
+}
+
+html,
+body {
   /* Making sure the page takes up the entire window in height */
   height: 100%;
+}
+
+html {
+  /* The background should be a wallpaper */
+  background-image: url('../img/background.jpeg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 
 body {
@@ -24,11 +73,7 @@ body {
   justify-content: center;
   flex-direction: row;
 
-  /* The background should be a wallpaper */
-  background-image: url('../img/background.jpeg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
+  background-color: var(--background-layer);
 }
 
 header {
@@ -51,10 +96,10 @@ header {
   /* On desktop, there should be some space between the bottom of the box and the screen */
   border-radius: 1rem;
   margin-bottom: 1rem;
-  border: .2rem solid rgba(0, 0, 0, .05);
+  border: .2rem solid var(--outside-border-color);
 
   /* Make the background white, slightly transparant and a blur of the wallpaper */
-  background-color: rgba(255, 255, 255, .8);
+  background-color: var(--main-background-color);
   backdrop-filter: blur(10rem);
 }
 
@@ -66,7 +111,8 @@ header {
 
   /* Give the border a radius and make it slightly transparent */
   border-radius: 1rem;
-  border: .1rem solid rgba(0, 0, 0, .2);
+  border: .1rem solid var(--inner-border-color);
+  background-color: var(--inner-background-color);
 }
 
 .header-footer {
@@ -76,9 +122,9 @@ header {
   justify-content: space-between;
 
   /* There should be a border at the top, radius at the bottom and transparent background */
-  border-top: .1rem solid rgba(0, 0, 0, .025);
+  border-top: .1rem solid var(--inner-border-color);
   border-radius: 0 0 1rem 1rem;
-  background-color: rgba(150, 150, 150, .05);
+  background-color: var(--inner-background-color);
 }
 
 img {
@@ -104,6 +150,7 @@ img {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+  gap: 1rem;
 }
 
 .recent-column {
@@ -131,13 +178,18 @@ img {
 
   /* There should be 6 items in a row, spread and with some space around them */
   flex: 1 0 16%;
-  margin: 1rem 0;
   gap: .25rem;
 
-  /* The text should be black and have no decoration */
-  text-decoration: none;
-  color: black;
-  font-size: small;
+  /* Make sure that there is a box around the items to prepare for hovers */
+  border-radius: .5rem;
+  padding: 1rem 0;
+}
+
+.nav-link:hover,
+.recent-item:hover,
+.personal-info:hover {
+  /* Change the background to have a slightly transparant white look */
+  background: var(--hover-background-color);
 }
 
 .nav-link img {
@@ -159,6 +211,10 @@ img {
   flex-direction: row;
   align-items: center;
   gap: 1rem;
+
+  /* Make sure that there is a box around the items to prepare for hovers */
+  padding: .5rem 0;
+  border-radius: .5rem;
 }
 
 .recent-details {
@@ -183,4 +239,22 @@ img {
 
   /* The personal info should be small text */
   font-size: small;
+
+  /* Make sure the border has a radius for keyboard selection */
+  border-radius: .5rem;
+  padding-right: .5rem;
+}
+
+.personal-link {
+  /* The items need to be aligned horizontally */
+  display: inline-block;
+
+  /* Make sure the box has a radius and space for selection with the keyboard */
+  border-radius: 50%;
+  padding: .5rem;
+}
+
+.personal-link img {
+  /* The image is a block to contain just the image without extras */
+  display: block;
 }
