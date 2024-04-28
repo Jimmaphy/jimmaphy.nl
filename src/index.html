@@ -6,9 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jimmaphy</title>
     <link rel="stylesheet" href="./assets/css/main.css">
+    <script src="https://kit.fontawesome.com/403fce4613.js" crossorigin="anonymous"></script>
+    <script src="./assets/js/main.js"></script>
   </head>
 
-  <body>
+  <body onload="enableMenu()">
     <header>
       <input type="text" class="search" placeholder="Search for pages, projects and documents">
 
@@ -144,7 +146,7 @@
       </div>
 
       <div class="header-footer content-block ">
-        <a class="personal-info" href="#">
+        <a class="personal-info" href="#" onclick="toggleMenu()">
           <img src="http://via.placeholder.com/500x500"/>
           <p class="name">Wesley van Schaijk</p>
         </a>
@@ -169,6 +171,22 @@
       </div>
     </header>
 
-    <main></main>
+    <main class="hidden">
+      <div class="titlebar">
+        <div class="titlebar-title">
+          <a class="back-button" href="#">
+            <i class="fa-solid fa-arrow-left"></i>
+          </a>
+
+          <p>Jimmaphy</p>
+        </div>
+
+        <a class="close-button" href="#" onclick="toggleMenu()">
+          <i class="fa-solid fa-xmark"></i>
+        </a>
+      </div>
+      
+      <h1>Jimmaphy</h1>
+    </main>
   </body>
 </html>

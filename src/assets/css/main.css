@@ -57,6 +57,7 @@ html,
 body {
   /* Making sure the page takes up the entire window in height */
   height: 100%;
+  overflow: hidden;
 }
 
 html {
@@ -101,7 +102,34 @@ header {
   /* Make the background white, slightly transparant and a blur of the wallpaper */
   background-color: var(--main-background-color);
   backdrop-filter: blur(10rem);
+  transform: translateY(150%);
 }
+
+/* header.enabled {
+  animation: .3s linear 0s start-rise forwards;
+}
+
+@keyframes start-rise {
+  0% {
+    transform: translateY(150%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+header.hidden {
+  animation: .3s linear 0s start-fall forwards;
+}
+
+@keyframes start-fall {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(150%);
+  }
+} */
 
 .search {
   /* There should be enough space in the box for an image at the start */
@@ -257,4 +285,90 @@ img {
 .personal-link img {
   /* The image is a block to contain just the image without extras */
   display: block;
+}
+
+main {
+  width: 80%;
+  height: 80%;
+  margin: 0 auto;
+  align-self: center;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  /* The box should have a border-radius and a transparant border */
+  /* On desktop, there should be some space between the bottom of the box and the screen */
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+  border: .1rem solid var(--inner-border-color);
+
+  /* Make the background white, slightly transparant and a blur of the wallpaper */
+  background-color: var(--main-background-color);
+  backdrop-filter: blur(10rem);
+
+  /* opacity: 0; */
+}
+
+.hidden {
+  display: none;
+}
+
+.titlebar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 3rem;
+  margin-left: .25rem;
+}
+
+.titlebar p {
+  display: inline-block;
+}
+
+.close-button {
+  /* Give the button some space on the right and a border radius in the top-left */
+  width: 4rem;
+  border-top-right-radius: 1rem;
+
+  /* Make sure the text of the button is in the middle */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.close-button:hover {
+  background-color: red;
+  border: .1rem solid red;
+  margin: -.05rem;
+}
+
+.close-button:hover i {
+  color: white;
+}
+
+.titlebar-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.back-button {
+  /* Give the button some space on the right and a border radius in the top-left */
+  width: 4rem;
+  height: 2.5rem;
+  border-radius: .5rem;
+
+  /* Make sure the text of the button is in the middle */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: .1rem solid transparent;
+}
+
+.back-button:hover {
+  background-color: var(--hover-background-color);
+  border: .1rem solid var(--hover-background-color);
 }
